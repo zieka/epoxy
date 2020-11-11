@@ -9,7 +9,8 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath "com.android.tools.build:gradle:$ANDROID_PLUGIN_VERSION"
+//    classpath "com.android.tools.build:gradle:$ANDROID_PLUGIN_VERSION"
+    classpath "com.android.tools.build:gradle:4.2.0-alpha13"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
     // Upload with:
     // ./gradlew clean uploadArchives --no-daemon --no-parallel

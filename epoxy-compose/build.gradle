@@ -1,33 +1,24 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
-
   compileSdkVersion rootProject.COMPILE_SDK_VERSION
 
   defaultConfig {
-    applicationId "com.airbnb.epoxy.kotlinsample"
     minSdkVersion 21
     targetSdkVersion rootProject.TARGET_SDK_VERSION
-    versionCode 1
-    versionName "1.0"
-  }
-
-  dataBinding {
-    enabled = true
-  }
-  viewBinding {
-    enabled = true
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 
   kotlinOptions {
     jvmTarget = '1.8'
     useIR = true
   }
+
   composeOptions {
-    kotlinCompilerVersion '1.4.0'
+    kotlinCompilerVersion '1.4.10'
     kotlinCompilerExtensionVersion '1.0.0-alpha05'
   }
 
@@ -38,11 +29,9 @@ android {
 
 dependencies {
   implementation rootProject.deps.kotlin
-  implementation rootProject.deps.androidRecyclerView
-  implementation rootProject.deps.androidAppcompat
-  implementation project(':epoxy-databinding')
-  implementation project(':epoxy-adapter')
-  implementation project(':epoxy-annotations')
+  api project(':epoxy-annotations')
+  api project(':epoxy-adapter')
+  kapt project(':epoxy-processor')
 
   implementation 'androidx.compose.ui:ui:1.0.0-alpha05'
   // Tooling support (Previews, etc.)
@@ -50,10 +39,12 @@ dependencies {
   // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
   implementation 'androidx.compose.foundation:foundation:1.0.0-alpha05'
 
-  kapt project(':epoxy-processor')
-  kaptTest project(":epoxy-processor")
-
-  testImplementation rootProject.deps.robolectric
   testImplementation rootProject.deps.junit
+  testImplementation rootProject.deps.robolectric
   testImplementation rootProject.deps.mockito
+  androidTestImplementation rootProject.deps.junit
+  androidTestImplementation rootProject.deps.androidArchCoreTesting
+  androidTestImplementation rootProject.deps.androidTestRunner
+
+  kaptAndroidTest project(":epoxy-processor")
 }

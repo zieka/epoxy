@@ -8,7 +8,7 @@ android {
   compileSdkVersion rootProject.COMPILE_SDK_VERSION
 
   defaultConfig {
-    applicationId "com.airbnb.epoxy.kotlinsample"
+    applicationId "com.airbnb.epoxy.composesample"
     minSdkVersion 21
     targetSdkVersion rootProject.TARGET_SDK_VERSION
     versionCode 1
@@ -42,6 +42,7 @@ dependencies {
   implementation rootProject.deps.androidAppcompat
   implementation project(':epoxy-databinding')
   implementation project(':epoxy-adapter')
+  implementation project(':epoxy-compose')
   implementation project(':epoxy-annotations')
 
   implementation 'androidx.compose.ui:ui:1.0.0-alpha05'
