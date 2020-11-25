@@ -1,4 +1,4 @@
-#
+# 4.1.1-AIRBNB1 (Nov 25, 2020)
 - Add support for `EpoxyModelGroup` in the `EpoxyVisibilityTracker` (#1091)
 
 # 4.1.0 (Sept 17, 2020)
