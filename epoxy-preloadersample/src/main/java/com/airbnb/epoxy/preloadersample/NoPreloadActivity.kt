@@ -2,7 +2,7 @@ package com.airbnb.epoxy.preloadersample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.epoxy.preloadersample.databinding.ListActivityBinding
+import kotlinx.android.synthetic.main.list_activity.*
 
 class NoPreloadActivity : AppCompatActivity() {
 
@@ -11,13 +11,10 @@ class NoPreloadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ListActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.list_activity)
 
-        binding.recyclerView.apply {
-            setController(controller)
-            setHasFixedSize(true)
-        }
+        recycler_view.setHasFixedSize(true)
+        recycler_view.setController(controller)
 
         controller.setFilterDuplicates(true)
         controller.setData(images)
